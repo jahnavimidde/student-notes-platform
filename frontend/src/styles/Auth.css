@@ -1,0 +1,75 @@
+/* Page background and center alignment */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+/* Rectangle card box */
+.auth-box {
+  width: 360px;
+  padding: 36px;
+  background-color: #ffffff;
+  border: 2px solid #E5BA41;   /* visible border */
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18); /* stronger shadow */
+  box-sizing: border-box;
+}
+
+
+/* Heading */
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Input fields */
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.auth-box input:focus {
+  outline: none;
+  border-color: #E5BA41;
+}
+
+/* Button */
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #E5BA41;
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.auth-btn:hover {
+  background-color: #d4a933;
+}
+
+/* Footer text */
+.auth-footer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+}
+
+.auth-footer a {
+  color: #E5BA41;
+  text-decoration: none;
+  font-weight: 600;
+}
