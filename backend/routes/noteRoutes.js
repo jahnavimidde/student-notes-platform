@@ -20,6 +20,19 @@ router.post(
   upload.single("pdf"),
   noteController.uploadNote
 );
+// Students view approved notes
+router.get(
+  "/",
+  authMiddleware.protect,
+  noteController.getApprovedNotes
+);
+// View single approved note (PDF)
+router.get(
+  "/:id",
+  authMiddleware.protect,
+  noteController.getNoteById
+);
+
 
 // Admin views pending notes
 router.get(

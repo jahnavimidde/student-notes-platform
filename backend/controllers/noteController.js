@@ -87,10 +87,43 @@ const updateNoteStatus = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+// @desc    Get all approved notes
+// @route   GET /api/notes
+// @access  Protected
+const getApprovedNotes = async (req, res) => {
+  try {
+    const notes = await Note.find({ status: "approved" }).sort({ createdAt: -1 });
+    res.status(200).json(notes);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch notes" });
+  }
+};
+// @desc    Get single note by ID
+// @route   GET /api/notes/:id
+// @access  Protected
+const getNoteById = async (req, res) => {
+  try {
+    const note = await Note.findById(req.params.id);
+
+    if (!note || note.status !== "approved") {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
+    res.status(200).json({
+      pdfUrl: note.pdfUrl
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to load note" });
+  }
+};
+
+
 
 module.exports = {
   uploadNote,
   getPendingNotes,
-  updateNoteStatus
+  updateNoteStatus,
+  getApprovedNotes,
+  getNoteById
 };
 
