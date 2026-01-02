@@ -5,8 +5,11 @@ const express = require("express");
 const dotenv = require("dotenv");
 const { protect } = require("./middleware/authMiddleware");
 
+
 // Import MongoDB connection function
 const connectDB = require("./config/db");
+const cors = require("cors");
+
 
 // Load environment variables into process.env
 dotenv.config({ path: "./.env" });
@@ -14,6 +17,7 @@ dotenv.config({ path: "./.env" });
 
 // Create an Express application
 const app = express();
+app.use(cors());
 console.log("MONGO_URI:", process.env.MONGO_URI);
 
 // Connect to MongoDB
@@ -23,6 +27,7 @@ connectDB();
 // Middleware to parse incoming JSON data
 // This allows us to access req.body
 app.use(express.json());
+
 const authRoutes = require("./routes/authRoutes");
 
 app.use("/api/auth", authRoutes);
