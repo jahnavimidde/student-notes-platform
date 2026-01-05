@@ -1,10 +1,14 @@
 import { useState } from "react";
 import api from "../services/api";
 import "../styles/Auth.css";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // ✅ Hook must be inside component
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -13,8 +17,12 @@ function Login() {
         password
       });
 
+      // ✅ Save token
       localStorage.setItem("token", res.data.token);
-      alert("Login successful");
+
+      // ✅ Redirect to Home
+      navigate("/");
+
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }

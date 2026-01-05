@@ -1,21 +1,30 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import UploadNote from "./pages/UploadNote";
-import NotesList from "./pages/NotesList";
+import Dashboard from "./pages/Dashboard";
+import Upload from "./pages/Upload";
 import PdfViewer from "./pages/PdfViewer";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
+      {/* Global Navbar */}
+      <Navbar />
+
+      {/* Page Routes */}
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/upload" element={<UploadNote />} />
-        <Route path="/notes" element={<NotesList />} />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/upload" element={<Upload />} />
         <Route path="/view/:id" element={<PdfViewer />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

@@ -1,0 +1,14 @@
+.home-container {
+  padding: 40px;
+}
+
+.home-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.notes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
